@@ -17,7 +17,8 @@ def lsd(src):
 
     lens = len(src)
     src = (ctypes.c_double * lens)(*src)
-    lsdlib.lsdGet(src, ctypes.c_int(rows), ctypes.c_int(cols), temp)
+    lsdlib.lsdGet(src, ctypes.c_int(rows), ctypes.c_int(
+        cols), ctypes.c_char_p(bytes(temp, 'utf-8')))
 
     fp = open(temp, 'r')
     cnt = fp.read().strip().split(' ')
